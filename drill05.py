@@ -37,7 +37,11 @@ while running:
             clear_canvas()
             TUK_ground.draw(1280 // 2, 1080 // 2)
 
-            character.clip_draw(frame * 100, 100 * 1, 100, 100, x, y)
+            if x1 > x2:
+                character.clip_composite_draw(frame * 100, 100 * 1, 100, 100, 0, 'h', x, y, 200, 200)
+            else:
+                character.clip_draw(frame * 100, 100 * 1, 100, 100, x, y, 200, 200)
+
             hand_arrow.draw(x2, y2)
 
             update_canvas()
