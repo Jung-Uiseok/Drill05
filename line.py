@@ -1,10 +1,8 @@
 import turtle
 import random
 
-
 def stop():
     turtle.bye()
-
 
 def prepare_turtle_canvas():
     turtle.setup(1024, 768)
@@ -44,21 +42,35 @@ def draw_big_point(p):
     turtle.dot(15)
     turtle.write('     '+str(p))
 
-
 def draw_point(p):
     turtle.goto(p)
     turtle.dot(5, random.random(), random.random(), random.random())
 
 
 def draw_line(p1, p2):
-    # fill here
-    pass
+    draw_big_point(p1)
+    draw_big_point(p2)
 
+    x1, y1 = p1[0], p1[1]
+    x2, y2 = p2[0], p2[1]
+
+    for i in range(0, 100+1, 4):
+        t = i / 100
+        x = (1-t) * x1 + t * x2
+        y = (1-t) * y1 + t * y2
+        draw_point((x,y))
+
+    draw_point((x2,y2))
 
 prepare_turtle_canvas()
 
+points = [(random.randint(-300,300), random.randint(-300,300)) for i in range(10)]
 
-# fill here
+for p in points:
+    draw_big_point(p)
 
+for i in range(0, len(points)-1):
+    draw_line(points[i], points[i+1])
+draw_line(points[-1], points[0])
 
 turtle.done()
