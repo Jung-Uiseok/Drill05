@@ -18,21 +18,16 @@ def handle_events():
             if event.key == SDLK_ESCAPE:
                 running = False
 
-def draw_hand_point(p):
-    hand_arrow.draw(p)
-
-#points = [(random.randint(-300,300), random.randint(-300,300)) for i in range(10)]
 running = True
-x = 1280 // 2
-y = 1080 // 2
+x = random.randint(0,1280)
+y = random.randint(0,1080)
 frame = 0
 
 while running:
     clear_canvas()
     TUK_ground.draw(1280//2, 1080//2)
-    character.clip_draw(frame * 100, 100 * 1, 100, 100, x, y)
-    #for p in points:
-        #draw_hand_point(p)
+    #character.clip_draw(frame * 100, 100 * 1, 100, 100, x, y)
+    hand_arrow.draw(x,y)
     update_canvas()
     frame = (frame + 1) % 8
 
